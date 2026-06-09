@@ -1,9 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import emailjs from "@emailjs/browser";
 import {
   ArrowRight, Github, Linkedin, Mail, MapPin, Download, Sparkles,
   Code2, Brain, Database, Wrench, GraduationCap, Briefcase,
   Youtube, ExternalLink, Send, Cpu, Zap, Rocket, Terminal,
+  Loader2, CheckCircle, AlertCircle,
 } from "lucide-react";
 import profileImg from "@/assets/profile.jpg";
 
