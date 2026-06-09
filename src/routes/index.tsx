@@ -124,6 +124,8 @@ function Hero({ typed }: { typed: string }) {
     <section id="top" className="relative pt-28 pb-20 overflow-hidden min-h-screen flex items-center">
       <div className="absolute inset-0 grid-bg pointer-events-none" />
       <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
+      <Particles count={45} className="absolute inset-0" />
+      <Meteors number={14} />
       {/* Orbital glows */}
       <div className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-primary/20 blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full bg-accent/15 blur-[140px] pointer-events-none" />
