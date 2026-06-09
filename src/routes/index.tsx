@@ -58,13 +58,31 @@ function Portfolio() {
       <Nav />
       <Hero typed={typed} />
       <About />
+      <Journey />
       <Education />
       <Skills />
+      <GitHubSection />
       <Projects />
       <Experience />
+      <Content />
       <Contact />
       <Footer />
+      <AskDihansa />
     </div>
+  );
+}
+
+function GitHubSection() {
+  return (
+    <section id="github" className="relative py-24">
+      <div className="max-w-7xl mx-auto px-6">
+        <SectionHeader tag="// Live · GitHub" title={<>Code in the <span className="neon-text">Open</span></>} subtitle="Real-time stats pulled straight from my GitHub profile." />
+        <div className="grid lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2"><GitHubStats /></div>
+          <SkillsRadar />
+        </div>
+      </div>
+    </section>
   );
 }
 
