@@ -8,6 +8,7 @@ import {
   Loader2, CheckCircle, AlertCircle, X,
 } from "lucide-react";
 import profileImg from "@/assets/profile.jpg";
+import cvAsset from "@/assets/cv.pdf.asset.json";
 import { Particles, Meteors } from "@/components/portfolio/effects";
 import { GitHubStats, SkillsRadar } from "@/components/portfolio/github-stats";
 import { Journey } from "@/components/portfolio/journey";
@@ -192,7 +193,7 @@ function Hero({ typed }: { typed: string }) {
               <a href="#contact" className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full glass-card glass-card-hover font-semibold">
                 <Mail className="w-4 h-4" /> Contact Me
               </a>
-              <a href="/Buddhi-Dihansa-CV.pdf" download className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full glass-card glass-card-hover font-semibold">
+              <a href={cvAsset.url} target="_blank" rel="noreferrer" download="Buddhi-Dihansa-CV.pdf" className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full glass-card glass-card-hover font-semibold">
                 <Download className="w-4 h-4" /> CV
               </a>
             </div>
