@@ -95,64 +95,149 @@ function Nav() {
 
 function Hero({ typed }: { typed: string }) {
   return (
-    <section id="top" className="relative pt-32 pb-24 overflow-hidden">
+    <section id="top" className="relative pt-28 pb-20 overflow-hidden min-h-screen flex items-center">
       <div className="absolute inset-0 grid-bg pointer-events-none" />
       <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
-      <div className="relative max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
-        <div className="animate-fade-up">
-          <span className="chip mb-6"><span className="w-2 h-2 rounded-full bg-primary animate-pulse" /> Available for AI/ML opportunities</span>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] mb-6">
-            Building <span className="neon-text">Intelligent</span><br />
-            Systems for the<br />
-            <span className="italic font-display">Future</span> 🚀
-          </h1>
-          <div className="text-lg md:text-xl text-muted-foreground mb-2 font-mono h-8">
-            <span className="text-primary">&gt;</span> {typed}<span className="animate-blink">|</span>
-          </div>
-          <p className="text-base md:text-lg text-muted-foreground max-w-xl mb-8 mt-4">
-            Hi, I'm <span className="text-foreground font-semibold">Buddhi Dihansa</span> — a BSc (Hons) Data Science undergraduate at NSBM Green University, passionate about Artificial Intelligence, Machine Learning, and building real-world systems that matter.
-          </p>
-          <div className="flex flex-wrap gap-4 mb-12">
-            <a href="#projects" className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold hover:scale-105 transition-transform neon-glow">
-              View Projects <ArrowRight className="w-4 h-4" />
-            </a>
-            <a href="#contact" className="inline-flex items-center gap-2 px-6 py-3 rounded-full glass-card glass-card-hover font-semibold">
-              <Mail className="w-4 h-4" /> Contact Me
-            </a>
-            <a href="#" className="inline-flex items-center gap-2 px-6 py-3 rounded-full glass-card glass-card-hover font-semibold">
-              <Download className="w-4 h-4" /> Download CV
-            </a>
-          </div>
-          <div className="grid grid-cols-3 gap-4 max-w-md">
-            <Stat n="10+" l="Projects Built" />
-            <Stat n="3+" l="Years Learning" />
-            <Stat n="2028" l="Graduation" />
+      {/* Orbital glows */}
+      <div className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-primary/20 blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full bg-accent/15 blur-[140px] pointer-events-none" />
+
+      <div className="relative max-w-7xl mx-auto px-6 w-full">
+        {/* Top status bar */}
+        <div className="flex flex-wrap items-center justify-between gap-4 mb-10 animate-fade-up">
+          <span className="chip">
+            <span className="relative flex w-2 h-2">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-primary opacity-75 animate-ping" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
+            </span>
+            Available · AI/ML Internships
+          </span>
+          <div className="hidden md:flex items-center gap-2 text-xs font-mono text-muted-foreground">
+            <Terminal className="w-3 h-3 text-primary" />
+            <span>~/portfolio</span>
+            <span className="text-primary">$</span>
+            <span>whoami</span>
           </div>
         </div>
 
-        <div className="relative animate-fade-up" style={{ animationDelay: "200ms" }}>
-          <div className="relative aspect-square max-w-md mx-auto">
-            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/30 to-accent/30 blur-3xl animate-pulse" />
-            <div className="absolute inset-4 rounded-3xl border border-primary/30 animate-pulse-ring" />
-            <div className="relative w-full h-full rounded-3xl overflow-hidden glass-card border-primary/40 neon-glow">
-              <img src={profileImg} alt="Buddhi Dihansa portrait" className="w-full h-full object-cover" width={768} height={1024} />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4 glass-card p-4">
-                <div className="flex items-center gap-2 text-xs text-primary font-mono mb-1">
-                  <Cpu className="w-3 h-3" /> AI ENGINEER · IN TRAINING
-                </div>
-                <div className="text-sm font-semibold">Currently exploring LLMs, MLOps & autonomous agents.</div>
-              </div>
+        <div className="grid lg:grid-cols-12 gap-10 items-center">
+          {/* Left: Big name + content */}
+          <div className="lg:col-span-7 animate-fade-up" style={{ animationDelay: "100ms" }}>
+            <div className="text-sm font-mono text-primary mb-4 tracking-widest uppercase">
+              Hello World, I am
             </div>
-            <FloatingChip className="-top-4 -left-4" icon={<Brain className="w-4 h-4" />} label="ML" />
-            <FloatingChip className="top-1/3 -right-6" icon={<Code2 className="w-4 h-4" />} label="Python" />
-            <FloatingChip className="bottom-12 -left-8" icon={<Database className="w-4 h-4" />} label="Data" />
+            <h1 className="font-display font-bold leading-[0.85] mb-6">
+              <span className="block text-6xl sm:text-7xl md:text-8xl lg:text-9xl tracking-tighter">
+                DIHANSA
+              </span>
+              <span className="block mt-2 text-2xl sm:text-3xl md:text-4xl font-light text-muted-foreground">
+                — <span className="italic neon-text font-display">Building the future,</span>
+                <br />
+                <span className="text-foreground">one model at a time.</span>
+              </span>
+            </h1>
+
+            {/* Terminal-like typing */}
+            <div className="glass-card inline-flex items-center gap-3 px-4 py-2.5 mb-8 font-mono text-sm">
+              <span className="flex gap-1.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-destructive/70" />
+                <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
+                <span className="w-2.5 h-2.5 rounded-full bg-primary/70" />
+              </span>
+              <span className="text-primary">~$</span>
+              <span className="text-foreground">{typed}</span>
+              <span className="animate-blink text-primary">▍</span>
+            </div>
+
+            <p className="text-base md:text-lg text-muted-foreground max-w-xl mb-8 leading-relaxed">
+              I'm <span className="text-foreground font-semibold">Buddhi Dihansa</span> — a BSc (Hons) Data Science undergraduate at <span className="text-primary">NSBM Green University</span>, crafting intelligent systems with AI, ML and a founder's mindset.
+            </p>
+
+            <div className="flex flex-wrap gap-3 mb-10">
+              <a href="#projects" className="group relative inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-primary text-primary-foreground font-semibold neon-glow overflow-hidden">
+                <span className="relative z-10">View Projects</span>
+                <ArrowRight className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" />
+                <span className="absolute inset-0 bg-gradient-to-r from-accent to-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+              </a>
+              <a href="#contact" className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full glass-card glass-card-hover font-semibold">
+                <Mail className="w-4 h-4" /> Contact Me
+              </a>
+              <a href="#" className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full glass-card glass-card-hover font-semibold">
+                <Download className="w-4 h-4" /> CV
+              </a>
+            </div>
+
+            {/* Stats strip */}
+            <div className="grid grid-cols-3 gap-3 max-w-lg">
+              <Stat n="10+" l="Projects" />
+              <Stat n="2nd Yr" l="Undergrad" />
+              <Stat n="2028" l="Graduating" />
+            </div>
+          </div>
+
+          {/* Right: Portrait stack */}
+          <div className="lg:col-span-5 relative animate-fade-up" style={{ animationDelay: "300ms" }}>
+            <div className="relative max-w-sm mx-auto">
+              {/* Background frames */}
+              <div className="absolute -inset-6 rounded-[2rem] border border-primary/20 rotate-6" />
+              <div className="absolute -inset-3 rounded-[2rem] border border-accent/20 -rotate-3" />
+              <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-primary/40 via-transparent to-accent/40 blur-2xl" />
+
+              {/* Portrait */}
+              <div className="relative rounded-[2rem] overflow-hidden glass-card border-primary/30 neon-glow">
+                <img src={profileImg} alt="Buddhi Dihansa portrait" className="w-full aspect-[4/5] object-cover" width={768} height={960} />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+
+                {/* Scanline overlay */}
+                <div className="absolute inset-0 pointer-events-none opacity-20" style={{
+                  backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 2px, oklch(0.85 0.24 142 / 0.3) 2px, oklch(0.85 0.24 142 / 0.3) 3px)"
+                }} />
+
+                {/* Top badge */}
+                <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
+                  <div className="glass-card px-3 py-1.5 flex items-center gap-2 text-[10px] font-mono">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                    <span className="text-primary">LIVE</span>
+                  </div>
+                  <div className="glass-card px-3 py-1.5 text-[10px] font-mono text-muted-foreground">
+                    v2.0.28
+                  </div>
+                </div>
+
+                {/* Bottom info card */}
+                <div className="absolute bottom-4 left-4 right-4 glass-card p-4 border-primary/30">
+                  <div className="flex items-center gap-2 text-[10px] text-primary font-mono mb-1.5 tracking-wider">
+                    <Cpu className="w-3 h-3" /> STATUS · TRAINING_MODE
+                  </div>
+                  <div className="text-sm font-semibold leading-tight">
+                    Exploring LLMs, MLOps & autonomous agents.
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating tech chips */}
+              <FloatingChip className="-top-4 -left-6" icon={<Brain className="w-3.5 h-3.5" />} label="ML" />
+              <FloatingChip className="top-1/4 -right-8" icon={<Code2 className="w-3.5 h-3.5" />} label="Python" />
+              <FloatingChip className="bottom-20 -left-10" icon={<Database className="w-3.5 h-3.5" />} label="Data" />
+              <FloatingChip className="-bottom-4 right-4" icon={<Sparkles className="w-3.5 h-3.5" />} label="AI" />
+            </div>
+          </div>
+        </div>
+
+        {/* Marquee tech strip */}
+        <div className="mt-16 pt-8 border-t border-border/50 animate-fade-up" style={{ animationDelay: "500ms" }}>
+          <div className="flex flex-wrap items-center justify-between gap-6 text-xs font-mono text-muted-foreground">
+            <span className="text-primary tracking-widest">STACK //</span>
+            {["Python", "Machine Learning", "Streamlit", "Pandas", "scikit-learn", "R", "SQL", "GitHub"].map((t) => (
+              <span key={t} className="hover:text-foreground transition-colors">{t}</span>
+            ))}
           </div>
         </div>
       </div>
     </section>
   );
 }
+
 
 function Stat({ n, l }: { n: string; l: string }) {
   return (
