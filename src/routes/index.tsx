@@ -12,6 +12,7 @@ import { Particles, Meteors } from "@/components/portfolio/effects";
 import { GitHubStats, SkillsRadar } from "@/components/portfolio/github-stats";
 import { Journey } from "@/components/portfolio/journey";
 import { Content } from "@/components/portfolio/content";
+import { CurrentlyLearning } from "@/components/portfolio/learning";
 import { AskDihansa } from "@/components/portfolio/ask-dihansa";
 
 export const Route = createFileRoute("/")({
@@ -64,6 +65,7 @@ function Portfolio() {
       <GitHubSection />
       <Projects />
       <Experience />
+      <CurrentlyLearning />
       <Content />
       <Contact />
       <Footer />
@@ -190,7 +192,7 @@ function Hero({ typed }: { typed: string }) {
               <a href="#contact" className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full glass-card glass-card-hover font-semibold">
                 <Mail className="w-4 h-4" /> Contact Me
               </a>
-              <a href="#" className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full glass-card glass-card-hover font-semibold">
+              <a href="/Buddhi-Dihansa-CV.pdf" download className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full glass-card glass-card-hover font-semibold">
                 <Download className="w-4 h-4" /> CV
               </a>
             </div>
