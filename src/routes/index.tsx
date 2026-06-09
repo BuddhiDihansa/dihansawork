@@ -5,9 +5,14 @@ import {
   ArrowRight, Github, Linkedin, Mail, MapPin, Download, Sparkles,
   Code2, Brain, Database, Wrench, GraduationCap, Briefcase,
   Youtube, ExternalLink, Send, Cpu, Zap, Rocket, Terminal,
-  Loader2, CheckCircle, AlertCircle,
+  Loader2, CheckCircle, AlertCircle, X,
 } from "lucide-react";
 import profileImg from "@/assets/profile.jpg";
+import { Particles, Meteors } from "@/components/portfolio/effects";
+import { GitHubStats, SkillsRadar } from "@/components/portfolio/github-stats";
+import { Journey } from "@/components/portfolio/journey";
+import { Content } from "@/components/portfolio/content";
+import { AskDihansa } from "@/components/portfolio/ask-dihansa";
 
 export const Route = createFileRoute("/")({
   head: () => ({
