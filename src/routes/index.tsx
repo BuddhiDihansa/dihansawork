@@ -1,9 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import emailjs from "@emailjs/browser";
 import {
   ArrowRight, Github, Linkedin, Mail, MapPin, Download, Sparkles,
   Code2, Brain, Database, Wrench, GraduationCap, Briefcase,
   Youtube, ExternalLink, Send, Cpu, Zap, Rocket, Terminal,
+  Loader2, CheckCircle, AlertCircle,
 } from "lucide-react";
 import profileImg from "@/assets/profile.jpg";
 
@@ -450,6 +452,28 @@ function Experience() {
 }
 
 function Contact() {
+  const formRef = useRef<HTMLFormElement>(null);
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formRef.current) return;
+    setStatus("sending");
+
+    try {
+      await emailjs.sendForm(
+        "service_ifnvplq",
+        "template_dryno4f",
+        formRef.current,
+        "2418YK2IJdTkzrOQI"
+      );
+      setStatus("success");
+      formRef.current.reset();
+    } catch {
+      setStatus("error");
+    }
+  };
+
   return (
     <section id="contact" className="relative py-24">
       <div className="max-w-6xl mx-auto px-6">
@@ -461,18 +485,29 @@ function Contact() {
             <ContactCard icon={<Linkedin />} label="LinkedIn" value="buddhi-dihansa-gamage" href="https://www.linkedin.com/in/buddhi-dihansa-gamage-85073b3a6/" />
             <ContactCard icon={<MapPin />} label="Location" value="Hambantota, Sri Lanka" />
           </div>
-          <form onSubmit={(e) => { e.preventDefault(); alert("Thanks! I'll get back to you soon."); }}
-            className="md:col-span-3 glass-card p-8 space-y-4">
+          <form ref={formRef} onSubmit={handleSubmit} className="md:col-span-3 glass-card p-8 space-y-4">
             <div className="grid sm:grid-cols-2 gap-4">
-              <Field label="Name" name="name" placeholder="Your name" />
-              <Field label="Email" name="email" type="email" placeholder="you@domain.com" />
+              <Field label="Name" name="from_name" placeholder="Your name" />
+              <Field label="Email" name="from_email" type="email" placeholder="you@domain.com" />
             </div>
             <div>
               <label className="text-xs font-mono text-muted-foreground">Message</label>
-              <textarea required rows={5} placeholder="Tell me about your idea..." className="w-full mt-1 rounded-lg bg-input/60 border border-border focus:border-primary focus:outline-none px-4 py-3 text-sm resize-none" />
+              <textarea name="message" required rows={5} placeholder="Tell me about your idea..." className="w-full mt-1 rounded-lg bg-input/60 border border-border focus:border-primary focus:outline-none px-4 py-3 text-sm resize-none" />
             </div>
-            <button type="submit" className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold hover:scale-105 transition-transform neon-glow">
-              Send Message <Send className="w-4 h-4" />
+
+            {status === "success" && (
+              <div className="flex items-center gap-2 text-sm text-primary">
+                <CheckCircle className="w-4 h-4" /> Message sent! I'll get back to you soon.
+              </div>
+            )}
+            {status === "error" && (
+              <div className="flex items-center gap-2 text-sm text-destructive">
+                <AlertCircle className="w-4 h-4" /> Something went wrong. Please try again.
+              </div>
+            )}
+
+            <button type="submit" disabled={status === "sending"} className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold hover:scale-105 transition-transform neon-glow disabled:opacity-60 disabled:hover:scale-100">
+              {status === "sending" ? <><Loader2 className="w-4 h-4 animate-spin" /> Sending...</> : <>Send Message <Send className="w-4 h-4" /> </>}
             </button>
           </form>
         </div>
