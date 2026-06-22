@@ -3,7 +3,7 @@ import { GraduationCap, Rocket, Brain, Code2, Trophy } from "lucide-react";
 const STEPS = [
   { year: "2024", icon: <Code2 className="w-4 h-4" />, title: "Coding Foundations", body: "Started exploring Python, web dev and discovered my love for data." },
   { year: "2025", icon: <GraduationCap className="w-4 h-4" />, title: "BSc Data Science @ NSBM", body: "Joined NSBM Green University as a Data Science undergraduate." },
-  { year: "2025", icon: <Brain className="w-4 h-4" />, title: "AI/ML Automation Trainee", body: "Working at HelaNexusIT on real ML workflows and automation." },
+  { year: "2026", icon: <Brain className="w-4 h-4" />, title: "AI/ML Automation Trainee", body: "Working at HelaNexusIT on real ML workflows and automation." },
   { year: "2026", icon: <Trophy className="w-4 h-4" />, title: "Shipping projects", body: "Building dashboards, ML pipelines and exploring LLM applications." },
   { year: "2028+", icon: <Rocket className="w-4 h-4" />, title: "AI Engineer & Founder", body: "Graduating ready to launch ventures that ship intelligence to users." },
 ];
