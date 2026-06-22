@@ -12,4 +12,11 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Force-enable Nitro with the Vercel preset so production builds emit
+  // .vercel/output/ (Vercel auto-detects this Build Output API layout).
+  // Without this, outside a Lovable sandbox nitro is skipped and Vercel
+  // serves a static-only build → 404 NOT_FOUND on every SSR route.
+  nitro: {
+    preset: "vercel",
+  },
 });
