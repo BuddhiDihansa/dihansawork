@@ -343,7 +343,7 @@ function FactCard({ icon, title, body }: { icon: React.ReactNode; title: string;
 function Education() {
   const items = [
     { y: "2025 — 2028", t: "BSc (Hons) Data Science", o: "NSBM Green University", d: "Currently 2nd year undergraduate. Focus: AI, ML, statistics & data engineering." },
-    { y: "2025 — Present", t: "AI/ML Automation Trainee", o: "HelaNexusIT Solutions", d: "Hands-on with AI workflows, automation pipelines and applied ML tasks." },
+    { y: "2026 — Present", t: "AI/ML Automation Trainee", o: "HelaNexusIT Solutions", d: "Hands-on with AI workflows, automation pipelines and applied ML tasks." },
     { y: "Memberships", t: "AI Society · NForce Club", o: "NSBM Green University", d: "Active member collaborating on AI events, hackathons and tech workshops." },
   ];
   return (
