@@ -15,6 +15,7 @@ import { Journey } from "@/components/portfolio/journey";
 import { Content } from "@/components/portfolio/content";
 import { CurrentlyLearning } from "@/components/portfolio/learning";
 import { AskDihansa } from "@/components/portfolio/ask-dihansa";
+import { useProjects, type Project } from "@/lib/portfolio-data";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -396,19 +397,9 @@ function Skills() {
   );
 }
 
-const PROJECTS = [
-  { title: "YouTube Analytics Dashboard", cat: "Data Science", desc: "Interactive dashboard analyzing channel performance with Streamlit, Plotly & Pandas.", tech: ["Streamlit", "Plotly", "Pandas"], link: "https://github.com/BuddhiDihansa" },
-  { title: "Customer Churn Prediction", cat: "AI / ML", desc: "End-to-end ML pipeline with SHAP explainability deployed via Streamlit.", tech: ["scikit-learn", "SHAP", "Streamlit"], link: "https://github.com/BuddhiDihansa" },
-  { title: "Clinical Data Analysis in R", cat: "Data Science", desc: "Statistical exploration of the MSK-CHORD dataset for clinical insights.", tech: ["R", "ggplot2", "Stats"], link: "https://github.com/BuddhiDihansa" },
-  { title: "AI Companion Robot", cat: "AI / ML", desc: "Experimental project exploring conversational AI and embedded interaction.", tech: ["Python", "LLM", "IoT"], link: "https://github.com/BuddhiDihansa" },
-  { title: "Lanka Explores", cat: "Web", desc: "Web project showcasing Sri Lankan travel destinations with a modern UI.", tech: ["HTML", "CSS", "PHP"], link: "https://github.com/BuddhiDihansa" },
-  { title: "PetWorld", cat: "Web", desc: "Group web project — a community platform for pet lovers and adopters.", tech: ["HTML", "CSS", "JS"], link: "https://github.com/BuddhiDihansa" },
-];
-
-type Project = typeof PROJECTS[number];
-
 function Projects() {
-  const cats = ["All", "AI / ML", "Data Science", "Web"];
+  const PROJECTS = useProjects();
+  const cats = ["All", ...Array.from(new Set(PROJECTS.map((p) => p.cat)))];
   const [active, setActive] = useState("All");
   const [open, setOpen] = useState<Project | null>(null);
   const filtered = active === "All" ? PROJECTS : PROJECTS.filter((p) => p.cat === active);
@@ -435,7 +426,7 @@ function Projects() {
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map((p) => (
-            <button key={p.title} onClick={() => setOpen(p)}
+            <button key={p.repo ?? p.id ?? p.title} onClick={() => setOpen(p)}
               className="glass-card glass-card-hover p-6 group flex flex-col text-left relative overflow-hidden">
               <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-primary/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="flex items-start justify-between mb-4 relative">
