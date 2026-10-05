@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Github, Star, GitFork, Users, BookOpen } from "lucide-react";
+import { DEFAULT_RADAR, useSiteContent } from "@/lib/portfolio-data";
 
 type GH = { public_repos: number; followers: number; following: number; avatar_url: string; bio: string | null; name: string };
 
@@ -69,14 +70,7 @@ export function GitHubStats({ username = "BuddhiDihansa" }: { username?: string 
 }
 
 export function SkillsRadar() {
-  const skills = [
-    { label: "Python", value: 0.9 },
-    { label: "ML", value: 0.75 },
-    { label: "Data Viz", value: 0.8 },
-    { label: "SQL", value: 0.7 },
-    { label: "R", value: 0.65 },
-    { label: "LLMs", value: 0.6 },
-  ];
+  const skills = useSiteContent("radar", DEFAULT_RADAR).map((x) => ({ label: x.label, value: x.value / 100 }));
   const size = 260;
   const cx = size / 2;
   const cy = size / 2;

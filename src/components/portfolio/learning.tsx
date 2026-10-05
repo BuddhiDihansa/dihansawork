@@ -1,13 +1,10 @@
 import { Brain, Sparkles, Bot, Cpu } from "lucide-react";
+import { DEFAULT_LEARNING, useSiteContent } from "@/lib/portfolio-data";
 
-const LEARNING = [
-  { icon: <Brain className="w-4 h-4" />, label: "Deep Learning · PyTorch", value: 65 },
-  { icon: <Sparkles className="w-4 h-4" />, label: "LLM Fine-tuning & RAG", value: 55 },
-  { icon: <Bot className="w-4 h-4" />, label: "Agentic Systems · LangChain", value: 50 },
-  { icon: <Cpu className="w-4 h-4" />, label: "MLOps · MLflow / Docker", value: 40 },
-];
+const ICONS = [<Brain className="w-4 h-4" />, <Sparkles className="w-4 h-4" />, <Bot className="w-4 h-4" />, <Cpu className="w-4 h-4" />];
 
 export function CurrentlyLearning() {
+  const LEARNING = useSiteContent("learning", DEFAULT_LEARNING).map((l, i) => ({ ...l, icon: ICONS[i % ICONS.length] }));
   return (
     <section id="learning" className="relative py-24">
       <div className="max-w-5xl mx-auto px-6">
